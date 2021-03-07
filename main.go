@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/elementalcharge/cursogo/arrays"
-	"github.com/elementalcharge/cursogo/operacionesstrings"
-	"github.com/elementalcharge/cursogo/utilidades"
+	//"github.com/elementalcharge/cursogo/arrays"
+	//"github.com/elementalcharge/cursogo/operacionesstrings"
+	//"github.com/elementalcharge/cursogo/utilidades"
+	"github.com/elementalcharge/cursogo/maps"
 )
 const holaMundo string = "Hola %s %s, bienvenido al curso de Go"
 func main () {
-	name := utilidades.GetName()
+	/*name := utilidades.GetName()
 	LasName := "Boso"
 	var miNumero = utilidades.Suma(40, 60)
 	x, y, z := utilidades.GetMultiplesVariables()
@@ -36,4 +37,8 @@ func main () {
 	utilidades.Multiplo5switch()
 	utilidades.Bucles()
 	operacionesstrings.OperacionesConStrings()
+	*/
+
+	fmt.Println(maps.GetMap())
+	fmt.Println(maps.GetKeyMap("Casa"))
 }

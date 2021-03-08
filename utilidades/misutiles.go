@@ -1,19 +1,21 @@
 package utilidades
 
-import "fmt"
-
+import (
+	"fmt"
+	"errors"
+)
 // SumoOresto intento de calculadora sin uso de condicionales para detectar operacion Go
-func SumoOresto (name string) {
+/*func SumoOresto (name string) {
 		primerValor  := 0
 		segundoValor := 0
 		fmt.Println("Dime %s para sumar coloque el primer numero, para restar agregue - a uno de los dos numeros", name)
 		fmt.Scanf("%s", &primerValor)
 		fmt.Println("Ahora dime %s el segundo numero no te olvides de agregar - si deseas restar y aun no los hecho", name)
 		fmt.Scanf("%s", &segundoValor)
-		fmt.Println("resultado: %s ",Suma( primerValor, segundoValor ) )
+		fmt.Println("resultado: %s o falle por %s",Suma( primerValor, segundoValor ) )
 		
 	}
-
+*/
 // GetName pide un nombre para devolver como string o devuelve "nombre por defecto" en caso de enviar vacio	
 func GetName() string{
 
@@ -35,8 +37,15 @@ func GetDecimal() (float32, float64){
 	return float32(0.1), float64(float32(0.1))
 }
 
-func Suma(a int, b int) int{
-	return a+b
+func Suma(a interface{}, b interface{}) (int, error)  {
+	switch a.(type){
+	case string: return 0, errors.New("El valor A NO es un entero")
+	}
+	switch b.(type){
+	case string: return 0, errors.New("El valor A NO es un entero")
+	}
+	return a.(int)+b.(int), nil
+
 }
 func GetUnicode() string {
 	return "Goコースへようこそ"

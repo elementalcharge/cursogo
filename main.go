@@ -4,9 +4,10 @@ import (
 	"fmt"
 	//"github.com/elementalcharge/cursogo/arrays"
 	//"github.com/elementalcharge/cursogo/operacionesstrings"
-	"github.com/elementalcharge/cursogo/utilidades"
+	//"github.com/elementalcharge/cursogo/utilidades"
 	//"github.com/elementalcharge/cursogo/maps"
 	//"github.com/elementalcharge/cursogo/structs"
+	"strconv"
 )
 //const holaMundo string = "Hola %s %s, bienvenido al curso de Go"
 
@@ -94,11 +95,42 @@ func main () {
 
 
 */
+/*
 	miNumero, error := utilidades.Suma("60",40)
 	if error !=nil {
 		panic(error)
 	}
 
 	fmt.Println(miNumero)
+*/
+	//punteros()
+	canal := make( chan string)
+	lanzaHilos(300, canal)
 
+	for valor := range canal{
+		fmt.Println(valor)
+	}
+}
+/*
+func punteros(){
+	x := 100
+	var y *int 
+	y = &x
+
+	fmt.Println(&x,y)
+	*y = 500
+	fmt.Println(x,y)
+	fmt.Println(x,*y)
+	fmt.Println(&x,y)
+}*/
+
+func holaMundo( i int , canal chan<- string){
+	canal <- "Hola Mundo Numero: " + strconv.Itoa(i)
+}
+
+func lanzaHilos( numHilos int, canal chan<- string){
+	for i:=0 ; i< numHilos ; i++{
+		go holaMundo(i, canal)
+		}
+	
 }
